@@ -6,7 +6,7 @@ import { CarSelectedAmountContext } from '@/app/context/carselectedamountcontext
 
 function Cars() {
   const [selectedCar, setSelectedCar] = useState<number | null>(null);
-  const { directionData } = useContext(DirectionDataContext);
+  const [directionData, setDirectionData] = useState<any>(null);
   const { setSelectedAmount } = useContext(CarSelectedAmountContext);
 
   const getCost = (charges: number) => {

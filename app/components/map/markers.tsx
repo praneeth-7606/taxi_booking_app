@@ -4,6 +4,7 @@ import { Marker,Map } from 'react-map-gl'
 import { useContext } from 'react'
 import { SourceCordiContext } from '@/app/context/sourcecordicontext'
 import { DestinationCordiContext } from '@/app/context/destinationcordicontext'
+
 function markers() {
   const { sourceCoordinates, setSourceCoordinates } = useContext(SourceCordiContext);
     const { destinationCoordinates, setDestinationCoordinates } = useContext(DestinationCordiContext);

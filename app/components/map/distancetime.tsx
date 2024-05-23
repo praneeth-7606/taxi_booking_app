@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext,useState } from "react";
 // import { DirectionDataContext } from "@/context/DirectionDataContext";
 import { DirectionDataContext } from "@/app/context/directiondatacontext";
 type Props = {};
 
 const DistanceTime = (props: Props) => {
-  const { directionData, setDirectionData } = useContext(DirectionDataContext);
+  const [directionData, setDirectionData] = useState<any>(null);
 
   return (
     directionData?.routes && (

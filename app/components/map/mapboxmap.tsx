@@ -117,7 +117,7 @@
 
 // export default mapboxmap
 "use client";
-import { useRef, useContext, useEffect } from 'react';
+import { useRef, useContext, useEffect,useState } from 'react';
 import { MAPBOX_DRIVING_ENDPOINT } from '@/app/utils/constants';
 import Markers from './markers';
 import { DestinationCordiContext } from '@/app/context/destinationcordicontext';
@@ -131,7 +131,7 @@ import DistanceTime from './distancetime';
 
 function MapboxMap() {
   const mapRef = useRef<any>();
-  const { directionData, setDirectionData } = useContext(DirectionDataContext);
+  const [directionData, setDirectionData] = useState<any>(null);
   const { userlocation } = useContext(UserLocationContext);
   const { sourceCoordinates ,setSourceCoordinates } = useContext(SourceCordiContext);
   const { destinationCoordinates ,setDestinationCoordinates} = useContext(DestinationCordiContext);
