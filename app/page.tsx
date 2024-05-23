@@ -1,5 +1,6 @@
 
 "use client";
+import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs";
 import { DirectionDataContext } from "./context/directiondatacontext";
 import React, { useState, useEffect } from "react";
 import { ClerkProvider, UserButton } from "@clerk/nextjs";
@@ -36,7 +37,10 @@ export default function Home() {
 
   return (
     <div className="">
-
+ <SignedOut>
+        <RedirectToSignIn />
+      </SignedOut>
+      <SignedIn>
       <UserLocationContext.Provider value={{ userlocation, setuserlocation }}>
         <SourceCordiProvider value={{ sourcecoordinates, setsourcecoordinates }}>
           <DestinationCordiProvider value={{ destinationcoordinates, setdestinationcoordinates }}>
@@ -57,7 +61,7 @@ export default function Home() {
           </DestinationCordiProvider>
         </SourceCordiProvider>
       </UserLocationContext.Provider>
-      
+      </SignedIn>
     </div>
   );
 }
