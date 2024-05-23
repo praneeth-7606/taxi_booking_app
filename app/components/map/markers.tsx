@@ -1,64 +1,48 @@
-import React from 'react'
-import { UserLocationContext } from '@/app/context/userlocationcontext'
-import { Marker,Map } from 'react-map-gl'
-import { useContext } from 'react'
-import { SourceCordiContext } from '@/app/context/sourcecordicontext'
-import { DestinationCordiContext } from '@/app/context/destinationcordicontext'
+// "use client"
+import React, { useContext } from 'react';
+import { UserLocationContext } from '@/app/context/userlocationcontext';
+import { Marker } from 'react-map-gl';
+import { SourceCordiContext } from '@/app/context/sourcecordicontext';
+import { DestinationCordiContext } from '@/app/context/destinationcordicontext';
+import Image from 'next/image';
+import pinImage from './pin.png'; // Import the image
 
-function markers() {
-  const { sourceCoordinates, setSourceCoordinates } = useContext(SourceCordiContext);
-    const { destinationCoordinates, setDestinationCoordinates } = useContext(DestinationCordiContext);
+function Markers() {
+  const { sourceCoordinates } = useContext(SourceCordiContext);
+  const { destinationCoordinates } = useContext(DestinationCordiContext);
+  const { userlocation } = useContext(UserLocationContext);
 
-  const {userlocation,setuserlocation}=useContext(UserLocationContext)
   return (
     <div>
-      {/* usermarker */}
+      {/* User marker */}
       <Marker 
-    longitude={userlocation?.lng} 
-    latitude={userlocation?.lat}
-     anchor="bottom" >
-    <img src="./pin.png" className='w-10 h-10' />
-    {/* sourcemarker */}
-    <Marker 
-    longitude={userlocation?.lng} 
-    latitude={userlocation?.lat}
-     anchor="bottom" >
-    <img src="./pin.png" className='w-10 h-10' />
-    
+        longitude={userlocation?.lng} 
+        latitude={userlocation?.lat}
+        anchor="bottom" >
+        <Image src="./pin.png" width={20} height={20} alt="User Marker" />
+      </Marker>
 
+      {/* Source marker */}
+      {sourceCoordinates && 
+        <Marker 
+          longitude={sourceCoordinates.lng} 
+          latitude={sourceCoordinates.lat}
+          anchor="bottom" >
+          <Image src="./pin.png" width={20} height={20} alt="Source Marker" />
+        </Marker>
+      }
 
-    
-    
-  </Marker>
-  {sourceCoordinates?<Marker 
-    longitude={sourceCoordinates?.lng} 
-    latitude={sourceCoordinates?.lat}
-     anchor="bottom" >
-    <img src="./pin.png" className='w-10 h-10' />
-    {/* sourcemarker */}
-
-
-    
-    {/* destinationmarker */}
-  </Marker>:null}
-
-
-    
-    {/* destinationmarker */}
-  </Marker>
-  {destinationCoordinates?<Marker 
-    longitude={destinationCoordinates?.lng} 
-    latitude={destinationCoordinates?.lat}
-     anchor="bottom" >
-    <img src="./pin.png" className='w-10 h-10' />
-    {/* sourcemarker */}
-
-
-    
-    {/* destinationmarker */}
-  </Marker>:null}
+      {/* Destination marker */}
+      {destinationCoordinates && 
+        <Marker 
+          longitude={destinationCoordinates.lng} 
+          latitude={destinationCoordinates.lat}
+          anchor="bottom" >
+          <Image src="./pin.png" width={20} height={20} alt="Destination Marker" />
+        </Marker>
+      }
     </div>
-  )
+  );
 }
 
-export default markers
+export default Markers;

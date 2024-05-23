@@ -1,4 +1,4 @@
-export default[
+const cards=[
     {
         id:1,
         name:'Master Card',
@@ -26,3 +26,5 @@ export default[
     },
 
 ]
+
+export default cards
