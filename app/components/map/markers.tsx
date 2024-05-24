@@ -19,7 +19,7 @@ function Markers() {
         longitude={userlocation?.lng} 
         latitude={userlocation?.lat}
         anchor="bottom" >
-        <Image src="./pin.png" width={20} height={20} alt="User Marker" />
+        <Image src="/location.png" width={20} height={20} alt="User Marker" />
       </Marker>
 
       {/* Source marker */}
@@ -28,7 +28,7 @@ function Markers() {
           longitude={sourceCoordinates.lng} 
           latitude={sourceCoordinates.lat}
           anchor="bottom" >
-          <Image src="./pin.png" width={20} height={20} alt="Source Marker" />
+          <Image src="/location.png" width={20} height={20} alt="Source Marker" />
         </Marker>
       }
 
@@ -38,7 +38,7 @@ function Markers() {
           longitude={destinationCoordinates.lng} 
           latitude={destinationCoordinates.lat}
           anchor="bottom" >
-          <Image src="./pin.png" width={20} height={20} alt="Destination Marker" />
+          <Image src="/location.png" width={20} height={20} alt="Destination Marker" />
         </Marker>
       }
     </div>
